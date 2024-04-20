@@ -10,7 +10,7 @@ Info = namedtuple('Info', 'type name extension parent_directory')
 def show_directory(directory):
 
     if not os.path.isdir(directory):
-        print(f"Указанный путь {directory} не является директорией.")
+        print(f"Путь {directory} не является директорией.")
         return
     
     for root, dirs, files in os.walk(directory):
