@@ -3,14 +3,12 @@ import sys
 from collections import namedtuple
 import logging
 
-# Настройка логирования
 logging.basicConfig(filename="directory_contents.log", level=logging.INFO, format='%(message)s')
 
-# Определение namedtuple для хранения информации о файлах и каталогах
-Info = namedtuple('FileInfo', 'type name extension parent_directory')
+Info = namedtuple('Info', 'type name extension parent_directory')
 
 def show_directory(directory):
-    """Функция для анализа содержимого директории и логирования информации."""
+
     if not os.path.isdir(directory):
         print(f"Указанный путь {directory} не является директорией.")
         return
@@ -18,7 +16,7 @@ def show_directory(directory):
     for root, dirs, files in os.walk(directory):
         parent_directory = os.path.basename(root)
         if parent_directory == '':
-            parent_directory = os.path.basename(directory)  # Для корневой директории
+            parent_directory = os.path.basename(directory)  
 
         for name in files:
             file_info = Info(
